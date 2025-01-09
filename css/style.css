@@ -25,6 +25,61 @@ header {
     z-index: 10; /* Ensures the header is on top */
 }
 
+/* Default Navigation Style */
+header nav ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    gap: 20px;
+}
+
+header nav ul > li > a {
+    color: #333;
+    text-decoration: none;
+    font-size: 16px;
+    transition: color 0.3s ease;
+}
+
+header nav ul > li > a:hover {
+    color: var(--main-color);
+}
+
+/* Hamburger Menu (Hidden by Default) */
+.hamburger-menu {
+    display: none; /* Show only on smaller screens */
+    cursor: pointer;
+    z-index: 1100;
+}
+
+.hamburger-menu i {
+    font-size: 24px;
+    color: var(--main-color);
+}
+
+/* Responsive Navigation */
+@media (max-width: 768px) {
+    header nav ul {
+        display: none;
+        flex-direction: column;
+        position: absolute;
+        top: 100%;
+        right: 0;
+        background-color: white;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        width: 200px;
+        padding: 10px;
+    }
+
+    header nav ul.active {
+        display: flex;
+    }
+
+    .hamburger-menu {
+        display: block;
+    }
+}
+
 .content {
     padding-top: 75px; /* Adjust the padding based on your header's height */
 }
