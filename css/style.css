@@ -25,64 +25,13 @@ header {
     z-index: 10; /* Ensures the header is on top */
 }
 
-/* Default Navigation Style */
-header nav ul {
-    list-style: none;
-    margin: 0;
-    padding: 0;
-    display: flex;
-    gap: 20px;
-}
-
-header nav ul > li > a {
-    color: #333;
-    text-decoration: none;
-    font-size: 16px;
-    transition: color 0.3s ease;
-}
-
-header nav ul > li > a:hover {
-    color: var(--main-color);
-}
-
-/* Hamburger Menu (Hidden by Default) */
-.hamburger-menu {
-    display: none; /* Show only on smaller screens */
-    cursor: pointer;
-    z-index: 1100;
-}
-
-.hamburger-menu i {
-    font-size: 24px;
-    color: var(--main-color);
-}
-
-/* Responsive Navigation */
-@media (max-width: 768px) {
-    header nav ul {
-        display: none;
-        flex-direction: column;
-        position: absolute;
-        top: 100%;
-        right: 0;
-        background-color: white;
-        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-        width: 200px;
-        padding: 10px;
-    }
-
-    header nav ul.active {
-        display: flex;
-    }
-
-    .hamburger-menu {
-        display: block;
-    }
-}
-
 .content {
     padding-top: 75px; /* Adjust the padding based on your header's height */
 }
+
+
+
+
 
 /*Add to cart button*/
 .add-to-cart button {
@@ -259,72 +208,49 @@ footer a:hover {
     align-items: center;
 }
 
-/* Each box in the container */
+.mission-section {
+    width: 100%;
+    padding: 50px 0;
+}
+
 .mission-box {
-    background-color: #f9f9f9;
-    border-radius: 8px;
-    width: 80%; /* Full width for each box */
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    padding: 10px 20px; /* Reduced padding */
     display: flex;
-    flex-direction: row; /* Align image and text side by side */
-    justify-content: flex-start;
-    align-items: center; /* Vertically center content */
-    max-height: 250px; /* Reduced max-height to keep sections compact */
-    box-sizing: border-box; /* Prevent padding from affecting width */
-}
-
-/* Image styling */
-.mission-box .image img {
-    width: 90%; /* Adjust image width to fit in the box */
-    border-radius: 8px;
-    height: auto; /* Ensure image maintains aspect ratio */
-    max-height: 120px; /* Reduce max-height */
-    object-fit: cover;
-    margin-right: 15px; /* Space between image and text */
-}
-
-/* Text content within each box */
-.mission-box .text-content {
-    width: 65%; /* Text content takes up remaining space */
-}
-
-text {
     align-items: center;
+    justify-content: space-between;
+    margin: 50px auto;
+    width: 80%;
+    opacity: 0;
+    transform: translateY(50px);
+    transition: opacity 0.8s ease-out, transform 0.8s ease-out;
 }
 
-.mission-box h3 {
-    font-size: 1.2rem; /* Slightly smaller font for headings */
-    color: #333;
-    margin-bottom: 10px;
+.mission-box .mission-image img {
+    width: 100%;
+    max-width: 400px;
+    border-radius: 8px;
 }
 
-.mission-box p {
-    font-size: 1rem;
-    color: #555;
-    line-height: 1.4; /* Adjust line height for readability */
-    margin-bottom: 10px; /* Reduced margin */
+.mission-box .mission-text {
+    max-width: 50%;
 }
 
-/* Responsive design for smaller screens */
+.mission-box.left .mission-image { order: 1; }
+.mission-box.left .mission-text { order: 2; text-align: left; }
+.mission-box.right .mission-text { order: 1; text-align: right; }
+.mission-box.right .mission-image { order: 2; }
+
 @media (max-width: 768px) {
     .mission-box {
-        flex-direction: column; /* Stack image and text vertically */
-        width: 100%; /* Full width for each box */
-        max-height: none; /* Remove max-height restriction on smaller screens */
+        flex-direction: column;
+        text-align: center;
     }
-
-    .mission-box .image img {
-        width: 100%; /* Image takes full width on smaller screens */
-        max-height: none; /* Remove max-height restriction */
-        margin-right: 0; /* Remove margin */
-    }
-
-    .mission-box .text-content {
-        width: 100%; /* Text takes full width */
+    .mission-box .mission-text, .mission-box .mission-image {
+        max-width: 100%;
     }
 }
 
+/* Slide-in animation */
+.show { opacity: 1; transform: translateY(0); }
 
 
 
@@ -432,8 +358,14 @@ text {
 body {
     font-family: 'Cairo Play', sans-serif;
     font-family: 'Open Sans', sans-serif;
-    padding-top: 100px; /* Adjust this value to match the header height */
+    padding-top: 100px;
+    background: linear-gradient(to bottom, #ffeb99 10%, #e66611 90%);
+    background-attachment: fixed; /* Keeps gradient fixed while scrolling */
 }
+
+
+
+
 ::-webkit-scrollbar {
     width: 15px;
 }
@@ -597,8 +529,8 @@ header{
     width: 100%;
     height: 30px;
     z-index: 1;
-    background-image: linear-gradient(135deg, #f3f4f6 25%, transparent 25%), 
-    linear-gradient(225deg, #f3f4f6 25%, transparent 25%);
+    background-image: linear-gradient(135deg, #ffeb99  25%, transparent 25%), 
+    linear-gradient(225deg, #ffeb99  25%, transparent 25%);
     background-size: 30px 30px;
 }
 
@@ -634,9 +566,10 @@ header{
     bottom: 20px;
 }
 /* End Shared Components */
-/* Start header */
+/* Start header with transparency*/
 header {
-    background-color: white;
+    background-color: rgba(0, 0, 0, 0.5);
+    backdrop-filter: blur(100px);
     position: fixed;
     top: 0;
     left: 0;
@@ -768,20 +701,30 @@ img {
     overflow: hidden; /* Prevents content from spilling out */
 }
 
-.landing::after {
-    content: "";
+.landing {
+    position: relative;
+    height: 100vh; /* Full viewport height */
+    overflow: hidden; /* Prevents overflow issues */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.video-container {
     position: absolute;
-    top: -40px;
+    top: 0;
     left: 0;
     width: 100%;
     height: 100%;
-    background-image: url('../imgs/Main-Image-2.jpeg'); /* Replace with your image path */
-    background-size:cover; /* Ensures the image fills the element */
-    background-position: center; /* Centers the image */
-    transform: skewY(-6deg); /* Slants the image */
-    transform-origin: top left; /* Sets the origin for the skew*/ 
-    z-index: -1; /* Ensures it stays behind the content */
+    z-index: -1; /* Ensures the video stays in the background */
 }
+
+#landing-video {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Ensures the video covers the entire section */
+}
+
 
 .landing .container {
     min-height: calc(100vh - 72px);
@@ -1042,7 +985,7 @@ h2 {
 .gallery {
     padding-top: var(--main-padding-top);
     padding-bottom: var(--main-padding-bottom);
-    background-color: #f3f4f6;
+    background: linear-gradient(to bottom, #ffeb99 10%, #e66611 90%);
 }
 /* General styling for the gallery container */
 /* General styling for the gallery container */
