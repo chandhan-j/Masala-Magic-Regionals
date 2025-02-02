@@ -20,11 +20,8 @@
     <header id="header">
         <div class="container">
             <a href="index.html" class="mainlogo"><img src="imgs/Masala Magic.png" alt="Logo"> Masala Magic</a>
-           <nav>
-                <div class="hamburger-menu" onclick="toggleMenu()">
-                    <i class="fas fa-bars"></i>
-                </div>
-                <ul class="nav-links">
+            <nav>
+                <ul>
                     <li><a href="#our_mission" class="nav-a nav-otherL">Our Mission</a></li>
                     <li><a href="#our_process" class="nav-a">Our Process</a></li>
                     <li><a href="#Menu" class="nav-a">Our Menu</a></li>
@@ -33,13 +30,17 @@
                     <li><a href="References.html" class="nav-a">References</a></li>
                 </ul>
             </nav>
-
         </div>
     </header>
     <!-- End header -->
     <!-- Start Landing -->
    
     <div class="landing">
+        <div class="video-container">
+            <video autoplay muted loop id="landing-video">
+                <source src="imgs/rotating_food.mp4" type="video/mp4" />
+            </video>
+        </div>
         <div class="container">
             <div class="text-content">
                 <h1>Welcome, To Masala Magic</h1>
@@ -50,56 +51,46 @@
         </div>
         <a href="#Menu" class="go-down"><i class="fa-solid fa-angles-down fa-xl"></i></a>
     </div>
+    
     <!-- End Landing -->
       <!-- Start Our Mission -->
-    <div class="Our Mission" id="our_mission">
-        <div class="container">
-            <h2 class="main-title">Our Mission</h2>
-       
-            <div class="our-mission-container">
-                <!-- First Section -->
-                <div class="mission-box">
-                    <div class="image">
-                        <img src="imgs/mission-image.png" alt="Mission Image" />
-                    </div>
-                    <div class="text-content">
-                        <h3>Fresh Ingredients from Sustainable Farms</h3>
-                        <p>
-                            At Masala Magic, our mission is simple: We are committed to using ingredients that are hand-picked directly from our partner farms. Once harvested, these fresh ingredients are shipped directly to our kitchen, ensuring they maintain their natural quality and flavor.
-                        </p>
-                    </div>
-                </div>
-       
-                <!-- Second Section -->
-                <div class="mission-box">
-                    <div class="image">
-                        <img src="imgs/sustainability.png" alt="Sustainability Image" />
-                    </div>
-                    <div class="text-content">
-                        <h3>Organic and Sustainable Farming</h3>
-                        <p>
-                            We prioritize the health of our customers and the quality of the meals we serve. To achieve this, we only work with farmers who practice organic and sustainable farming methods. These farmers grow products without the use of harmful chemicals, ensuring that every bite you take is pure and nutritious.
-                        </p>
-                    </div>
-                </div>
-       
-                <!-- Third Section -->
-                <div class="mission-box">
-                    <div class="image">
-                        <img src="imgs/green-future.png" alt="Green Future Image" />
-                    </div>
-                    <div class="text-content">
-                        <h3>Building a Greener Future</h3>
-                        <p>
-                            Our belief is that by supporting organic farming practices, we help create a greener, healthier world. The goal of our farmers is to produce the best quality, natural products, aligning with our vision of a more sustainable future. By caring for the crops today, we are helping establish a food surplus for tomorrow.
-                        </p>
-                    </div>
-                </div>
-            </div        
-       
-       
-       
-    <div>
+    <!-- Our Mission Section -->
+<section class="mission-section" id="our-mission">
+    <h2 class="main-title">Our Mission</h2>
+
+    <!-- First Mission Box -->
+    <div class="mission-box slide-in left">
+        <div class="mission-image">
+            <img src="imgs/mission-image.png" alt="Mission Image">
+        </div>
+        <div class="mission-text">
+            <h2>Fresh Ingredients from Sustainable Farms</h2>
+            <p>We are committed to using ingredients hand-picked directly from our partner farms, ensuring the highest quality and flavor.</p>
+        </div>
+    </div>
+    
+    <!-- Second Mission Box -->
+    <div class="mission-box slide-in right">
+        <div class="mission-text">
+            <h2>Organic and Sustainable Farming</h2>
+            <p>Our farmers grow products without harmful chemicals, ensuring a healthy and nutritious dining experience.</p>
+        </div>
+        <div class="mission-image">
+            <img src="imgs/sustainability.png" alt="Sustainability Image">
+        </div>
+    </div>
+
+    <!-- Third Mission Box -->
+    <div class="mission-box slide-in left">
+        <div class="mission-image">
+            <img src="imgs/green-future.png" alt="Green Future Image">
+        </div>
+        <div class="mission-text">
+            <h2>Building a Greener Future</h2>
+            <p>Supporting organic farming helps create a sustainable food supply for the future.</p>
+        </div>
+    </div>
+</section>
         
     </div>
     <!-- End Our Code -->
@@ -257,6 +248,17 @@
     </footer>
     <!-- End Footer -->
      <script src="js/main.js"></script>
+<script>
+window.addEventListener("scroll", function () {
+    document.querySelectorAll(".slide-in").forEach((el) => {
+        if (el.getBoundingClientRect().top < window.innerHeight * 0.85) {
+            el.classList.add("show");
+        }
+    });
+});
+</script>
+
+
 </body>
 </html>
 
