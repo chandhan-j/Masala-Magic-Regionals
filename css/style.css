@@ -108,20 +108,187 @@ nav ul li a {
     margin-left: 20px;
 }
 
-.process-description, .process-steps, .process-thoughts {
+.our-process {
+    position: relative;
+    background-color: var(--main-bd-color);
+    padding: 50px 0; /* Reduced padding */
+    text-align: center;
+    overflow: hidden;
+}
+
+/* Adjusted Angled Background */
+.angled-background {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 150px; /* Reduced height for a compact look */
+    background: linear-gradient(135deg, #ff7c00 30%, #e66611 100%);
+    transform: skewY(-5deg);
+    z-index: -1;
+}
+
+/* Title Styling */
+.our-process .main-title {
+    margin-bottom: 15px; /* Brings title closer to content */
+}
+
+/* Process Container */
+.process-container {
+    position: relative;
+    width: 80%; /* Slightly reduced width for better centering */
+    margin: auto;
+    padding: 20px 0; /* Reduced padding */
+}
+
+/* Process Tabs */
+.process-tabs {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
     margin-bottom: 20px;
-    font-size: 18px;
-    line-height: 1.6;
+    flex-wrap: wrap;
 }
 
-.process-steps ul {
-    list-style-type: none;
-    padding: 0;
+/* Tab Buttons */
+.process-tab {
+    background: rgba(255, 255, 255, 0.2);
+    color: white;
+    padding: 12px 20px;
+    font-size: 16px;
+    border-radius: 25px;
+    cursor: pointer;
+    transition: background 0.3s ease-in-out, transform 0.3s ease;
 }
 
-.process-steps li {
-    margin-bottom: 10px;
+.process-tab:hover {
+    background: rgba(255, 255, 255, 0.4);
+    transform: scale(1.05);
 }
+
+.process-tab.active {
+    background: var(--main-color);
+    font-weight: bold;
+}
+
+/* Content Section */
+.process-content {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    min-height: 300px; /* Ensures content space */
+}
+
+/* Process Item */
+.process-item {
+    display: none;
+    align-items: center;
+    justify-content: space-between;
+    background: linear-gradient(145deg, #ff9f00, #e66611);
+    padding: 20px;
+    border-radius: 15px;
+    box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.2);
+    transition: transform 0.6s ease-out, opacity 0.5s ease-out;
+    opacity: 0;
+    width: 65%;
+    transform: perspective(1000px) rotateY(-8deg) scale(0.95);
+}
+
+/* Show Active Tab with 3D Pop Effect */
+.process-item.show {
+    display: flex;
+    opacity: 1;
+    transform: perspective(1000px) rotateY(0deg) scale(1);
+    animation: popOut 0.5s ease-out;
+}
+
+/* Pop-Out Animation */
+@keyframes popOut {
+    0% {
+        opacity: 0;
+        transform: perspective(1000px) rotateY(-15deg) scale(0.85);
+    }
+    60% {
+        transform: perspective(1000px) rotateY(5deg) scale(1.05);
+    }
+    100% {
+        opacity: 1;
+        transform: perspective(1000px) rotateY(0deg) scale(1);
+    }
+}
+
+/* Adjust Image */
+.process-item img {
+    width: 260px; /* Adjusted image size */
+    height: auto;
+    border-radius: 10px;
+    transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+}
+
+/* Glow Effect on Hover */
+.process-item img:hover {
+    transform: scale(1.08);
+    box-shadow: 0px 0px 15px rgba(255, 255, 255, 0.4);
+}
+
+/* Text */
+.process-text {
+    text-align: left;
+    color: white;
+    max-width: 48%;
+}
+
+.process-text h3 {
+    font-size: 22px;
+    margin-bottom: 5px;
+}
+
+.process-text p {
+    font-size: 14px;
+    line-height: 1.5;
+}
+
+/* Responsive Fixes */
+@media (max-width: 768px) {
+    .process-container {
+        width: 90%;
+    }
+
+    .process-tabs {
+        flex-wrap: wrap;
+    }
+
+    .process-tab {
+        font-size: 14px;
+        padding: 8px 15px;
+    }
+
+    .process-item {
+        flex-direction: column;
+        text-align: center;
+        gap: 15px;
+        width: 95%;
+        padding: 15px;
+    }
+
+    .process-text {
+        max-width: 90%;
+    }
+
+    .process-item img {
+        width: 75%;
+    }
+}
+
+
+/* Fade & Scale Animation */
+.fade-scale.show {
+    opacity: 1;
+    transform: scale(1);
+}
+
+
 
 strong {
     color: #d9534f;
