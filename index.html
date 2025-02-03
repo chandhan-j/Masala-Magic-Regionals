@@ -96,72 +96,78 @@
     <!-- End Our Code -->
     <!-- Start Articles -->
     <div class="spikes"></div>
-    <div class="OurProcess" id="our_process">
-        <div class="articles" id="articles">
-            <h2 class="main-title" id = "our_process">Our Process</h2>
-            <div class="container">
-                <div class="box">
-                    <img src="imgs/FarmToTable.png" alt="Sorry, No Image Found">
-                    <div class="text-content">
-                        <h3>Farm - Table</h3>
-                        <p>We take pride in serving meals made with fresh, organic ingredients sourced directly from local farmers. Our farm-to-table approach ensures each dish reflects our commitment to quality, sustainability, and community, delivering flavorful, sustainable dishes</p>
-                    </div>
-                    <!-- Wrap the entire content (image + text) inside an anchor tag to make the whole box clickable -->
-                    <a href="article1.html" class="read-more-button">
-                        <div class="info">
-                            <span>Read More</span>
-                            <i class="fas fa-long-arrow-alt-right"></i>
-                        </div>
-                    </a>
-                </div>
+    <div class="our-process" id="our_process">
+        <div class="angled-background"></div>
+        <h2 class="main-title">Our Process</h2>
+        
+        <div class="process-container">
+            <div class="process-tabs">
+                <div class="process-tab active" data-tab="farm">Farm-to-Table</div>
+                <div class="process-tab" data-tab="waste">Zero Waste</div>
+                <div class="process-tab" data-tab="inventory">Just-In-Time</div>
+                <div class="process-tab" data-tab="energy">Energy Efficiency</div>
+            </div>
             
-                <div class="box">
-                    <img src="imgs/ZeroWaste1.png" alt="Sorry, No Image Found">
-                    <div class="text-content">
+            <div class="process-content">
+                <div class="process-item show" id="farm">
+                    <img src="imgs/FarmToTable.png" alt="Farm-to-Table">
+                    <div class="process-text">
+                        <h3>Farm-to-Table</h3>
+                        <p>We source the freshest ingredients directly from organic farms, ensuring every dish is full of rich, natural flavors.</p>
+                    </div>
+                </div>
+                <div class="process-item" id="waste">
+                    <img src="imgs/ZeroWaste1.png" alt="Zero Waste">
+                    <div class="process-text">
                         <h3>Zero Waste Cooking</h3>
-                        <p>At Masala Magic, we focus on eliminating food waste while delivering top-quality meals. Our zero-waste cooking practices support our goal of environmental protection, making sustainable dining accessible. We aim to reduce waste and ensure sustainability in every dish we serve</p>
+                        <p>Every ingredient is used efficiently. Leftovers are composted or repurposed into new, creative dishes.</p>
                     </div>
-                    <!-- Wrap the entire content (image + text) inside an anchor tag to make the whole box clickable -->
-                    <a href="article2.html" class="read-more-button">
-                        <div class="info">
-                            <span>Read More</span>
-                            <i class="fas fa-long-arrow-alt-right"></i>
-                        </div>
-                    </a>
                 </div>
-                <div class="box">
-                    <img src="imgs/JustInTime.png" alt="Sorry, No Image Found">
-                    <div class="text-content">
-                        <h3>Just In Time Inventory</h3>
-                        <p>We implement a just-in-time inventory system to keep our ingredients fresh and minimize waste. This approach ensures we use only the best products, eliminating unnecessary storage and spoilage. It helps preserve the integrity and flavor of every meal we serve</p>
+                <div class="process-item" id="inventory">
+                    <img src="imgs/JustInTime.png" alt="Just-In-Time">
+                    <div class="process-text">
+                        <h3>Just-In-Time Inventory</h3>
+                        <p>We stock ingredients only when needed, ensuring minimal food waste and peak freshness for all our meals.</p>
                     </div>
-                    <!-- Wrap the entire content (image + text) inside an anchor tag to make the whole box clickable -->
-                    <a href="article3.html" class="read-more-button">
-                        <div class="info">
-                            <span>Read More</span>
-                            <i class="fas fa-long-arrow-alt-right"></i>
-                        </div>
-                    </a>
                 </div>
-                <div class="box">
-                    <img src="imgs/EnergyEfficiency.png" alt="Sorry, No Image Found">
-                    <div class="text-content">
-                        <h3>Energy-Efficiency Equipment</h3>
-                        <p>Energy efficiency plays a vital role in our sustainability efforts at Masala Magic. By using energy-saving appliances, we reduce our carbon footprint while maintaining high-quality meals and cost-effective operations</p>
+                <div class="process-item" id="energy">
+                    <img src="imgs/EnergyEfficiency.png" alt="Energy Efficiency">
+                    <div class="process-text">
+                        <h3>Energy Efficiency</h3>
+                        <p>Our kitchen runs on state-of-the-art energy-efficient equipment, reducing our carbon footprint while enhancing performance.</p>
                     </div>
-                    <!-- Wrap the entire content (image + text) inside an anchor tag to make the whole box clickable -->
-                    <a href="article4.html" class="read-more-button">
-                        <div class="info">
-                            <span>Read More</span>
-                            <i class="fas fa-long-arrow-alt-right"></i>
-                        </div>
-                    </a>
                 </div>
             </div>
-        <div></div>
-        <a href="#" title="Go To Up Page"><i class="fa-solid fa-circle-arrow-up fa-lg"></i></a>
+        </div>
     </div>
-    <div class="spikes2"></div>
+    <script>
+        document.querySelectorAll(".process-tab").forEach(tab => {
+            tab.addEventListener("click", function() {
+                // Remove active class from all tabs and hide all items
+                document.querySelectorAll(".process-tab").forEach(t => t.classList.remove("active"));
+                document.querySelectorAll(".process-item").forEach(item => {
+                    item.classList.remove("show");
+                    item.style.animation = ""; // Reset animation
+                });
+        
+                // Add active class to the clicked tab
+                this.classList.add("active");
+        
+                // Show the correct content with animation
+                const newItem = document.getElementById(this.dataset.tab);
+                newItem.classList.add("show");
+                newItem.style.animation = "popOut 0.5s ease-out";
+            });
+        });
+        </script>
+        
+        
+        
+        
+           
+    
+<div class="spikes2"></div>
+
     <!-- End Articles -->
     <!-- Start Gallery -->
     <div class="gallery" id="Menu">
@@ -258,6 +264,17 @@ window.addEventListener("scroll", function () {
 });
 </script>
 
+<script>
+    document.querySelectorAll(".process-tab").forEach(tab => {
+        tab.addEventListener("click", function() {
+            document.querySelectorAll(".process-tab").forEach(t => t.classList.remove("active"));
+            document.querySelectorAll(".process-item").forEach(item => item.classList.remove("show"));
+            this.classList.add("active");
+            document.getElementById(this.dataset.tab).classList.add("show");
+        });
+    });
+</script>
+        
 
 </body>
 </html>
