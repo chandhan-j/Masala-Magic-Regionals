@@ -66,47 +66,122 @@ header {
     padding: 20px;
 }
 
+/* Improved Header Styling */
 header {
-    background-color: white;
-    padding: 20px 0;
+    background: rgba(0, 0, 0, 0.85); /* Darker semi-transparent background */
+    backdrop-filter: blur(10px); /* Smooth glass effect */
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 1000;
+    height: 80px; /* Slightly shorter for a modern look */
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 30px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3); /* Soft shadow */
 }
 
-
+/* Logo */
 header .mainlogo {
-    display: flex; /* Ensure the logo container is a flexbox */
-    align-items: center; /* Vertically align logo and text */
-    font-size: 30;
-}
-
-header .mainlogo img {
-    height: 100px;
-    width: 100px;
-    object-fit: cover;
-}
-
-
-nav ul {
-    list-style: none;
-    padding: 0;
-}
-
-nav ul li {
-    display: inline;
-    margin-right: 20px;
-}
-
-nav ul li a {
-    color: #fff;
+    display: flex;
+    align-items: center;
+    font-size: 22px;
+    font-weight: bold;
+    color: white;
     text-decoration: none;
 }
 
-.page-title {
-    font-size: 30px;
-    color: #333;
-    text-align: center;
-    margin-bottom: 20px;
-    margin-left: 20px;
+header .mainlogo img {
+    height: 50px;
+    width: 50px;
+    object-fit: cover;
+    margin-right: 10px;
 }
+
+/* Navigation Menu */
+nav ul {
+    list-style: none;
+    display: flex;
+    gap: 20px;
+}
+
+nav ul li {
+    display: inline-block;
+}
+
+nav ul li a {
+    color: white;
+    font-size: 16px;
+    font-weight: 600;
+    text-transform: uppercase;
+    text-decoration: none;
+    padding: 10px 15px;
+    transition: all 0.3s ease;
+    position: relative;
+}
+
+/* Underline effect on hover */
+nav ul li a::after {
+    content: "";
+    position: absolute;
+    left: 50%;
+    bottom: -5px;
+    width: 0;
+    height: 2px;
+    background-color: #ffcc00;
+    transition: width 0.3s ease, left 0.3s ease;
+}
+
+nav ul li a:hover::after {
+    width: 100%;
+    left: 0;
+}
+
+/* Hover effect */
+nav ul li a:hover {
+    color: #ffcc00;
+}
+
+/* Mobile Navigation */
+@media (max-width: 768px) {
+    header {
+        height: 70px;
+        padding: 0 20px;
+    }
+    
+    nav ul {
+        display: none; /* Hide menu on small screens */
+        flex-direction: column;
+        background: rgba(0, 0, 0, 0.9);
+        position: absolute;
+        top: 80px;
+        right: 0;
+        width: 200px;
+        padding: 15px;
+        border-radius: 5px;
+    }
+
+    nav ul.show {
+        display: flex;
+    }
+
+    nav ul li {
+        display: block;
+        text-align: right;
+        margin-bottom: 10px;
+    }
+
+    /* Mobile Menu Button */
+    .menu-toggle {
+        display: block;
+        font-size: 28px;
+        color: white;
+        cursor: pointer;
+    }
+}
+
 
 .our-process {
     position: relative;
@@ -280,6 +355,8 @@ nav ul li a {
         width: 75%;
     }
 }
+
+
 
 
 /* Fade & Scale Animation */
@@ -1146,6 +1223,64 @@ h2 {
 .ourprocess {
     background-color: var(--main-bd-color);
 }
+@keyframes boldBounce {
+    0% {
+        transform: scale(1) translateY(0);
+        box-shadow: 0 0 5px rgba(255, 204, 0, 0.4);
+    }
+    50% {
+        transform: scale(1.08) translateY(-4px);
+        box-shadow: 0 0 20px rgba(255, 204, 0, 0.8);
+    }
+    100% {
+        transform: scale(1) translateY(0);
+        box-shadow: 0 0 5px rgba(255, 204, 0, 0.4);
+    }
+}
+
+@keyframes shimmer {
+    0% {
+        background-position: -200%;
+    }
+    100% {
+        background-position: 200%;
+    }
+}
+
+.read-more-button {
+    display: inline-flex;
+    align-items: center;
+    background: linear-gradient(90deg, #ffcc00, #ffb300, #ffcc00);
+    background-size: 200% 100%;
+    color: white;
+    padding: 12px 20px;
+    font-size: 16px;
+    font-weight: bold;
+    border-radius: 8px;
+    text-decoration: none;
+    transition: transform 0.3s ease, background-color 0.3s ease, box-shadow 0.3s ease;
+    margin-top: 10px;
+    border: 2px solid rgba(255, 255, 255, 0.6);
+    animation: boldBounce 2s infinite ease-in-out, shimmer 3s infinite linear;
+}
+
+.read-more-button:hover {
+    background-color: #ff9900; /* Rich orange-gold */
+    transform: scale(1.1);
+    box-shadow: 0 0 25px rgba(255, 153, 0, 0.9);
+    animation: none;
+}
+
+.read-more-button i {
+    margin-left: 8px;
+    transition: transform 0.3s ease-in-out;
+}
+
+.read-more-button:hover i {
+    transform: translateX(6px);
+}
+
+
 
 /* End Articles */
 /* Start Gallery */
