@@ -16,6 +16,19 @@
     <meta name="author" content="Chandhan Juluru">
 </head>
 <body>
+
+    <body onload="hideLoader()">
+
+        <!-- Loader Video Animation -->
+        <div id="loader">
+            <video autoplay muted playsinline id="loader-video">
+                <source src="imgs/LogoAnimation.mp4" type="video/mp4">
+            </video>
+        </div>
+    
+        <!-- Website Content (Hidden Until Load Completes) -->
+        <div id="content" class="hidden">
+    
     <!-- Start header -->
     <header id="header">
         <div class="container">
@@ -186,49 +199,17 @@
     <!-- Start Gallery -->
     <div class="gallery" id="Menu">
         <h2 class="main-title">Our Menu</h2>
-        <h2 class="h2">Press on the food to see more information</h2>
-        <div class="container">
-            <!-- Menu Item 1 -->
-            <div class="box">
-                <button onclick="window.location.href='GobiManchuria.html'">
-                    <img src="imgs/GobiManchuria.png" alt="Gobi Manchuria">
-                </button>
-                <p class="food-name">Gobi Manchuria</p>
-            </div>
-    
-            <!-- Menu Item 2 -->
-            <div class="box">
-                <button onclick="window.location.href='PaneerButterMasala.html'">
-                    <img src="imgs/PaneerButterMasala3.png" alt="Paneer Butter Masala">
-                </button>
-                <p class="food-name">Paneer Butter Masala</p>
-            </div>
-    
-            <!-- Menu Item 3 -->
-            <div class="box">
-                <button onclick="window.location.href='GulabJamun.html'">
-                    <img src="imgs/GulabJamun1.jpg" alt="Gulab Jamun">
-                </button>
-                <p class="food-name">Gulab Jamun</p>
-            </div>
-    
-            <!-- Menu Item 4 -->
-            <div class="box">
-                <button onclick="window.location.href='PaneerBiryani.html'">
-                    <img src="imgs/PaneerBiryani3.jpg" alt="Biryani">
-                </button>
-                <p class="food-name">Biryani</p>
-            </div>
-    
-            <!-- Menu Item 5 -->
-            <div class="box">
-                <button onclick="window.location.href='Jalebi.html'">
-                    <img src="imgs/Jalebi1.webp" alt="Jalebi">
-                </button>
-                <p class="food-name">Jalebi</p>
-            </div>
-        </div>
-    </div>
+        <h2 class="h2">Click a dish to learn more!</h2>
+        <div class="collage-menu">
+            <a href="GobiManchuria.html" class="collage-item"><img src="imgs/GobiManchuria.png" alt="Gobi Manchuria"><p>Gobi Manchuria</p></a>
+            <a href="PaneerButterMasala.html" class="collage-item large"><img src="imgs/PaneerButterMasala3.png" alt="Paneer Butter Masala"><p>Paneer Butter Masala</p></a>
+            <a href="GulabJamun.html" class="collage-item"><img src="imgs/GulabJamun1.jpg" alt="Gulab Jamun"><p>Gulab Jamun</p></a>
+            <a href="PaneerBiryani.html" class="collage-item wide"><img src="imgs/PaneerBiryani3.jpg" alt="Paneer Biryani"><p>Paneer Biryani</p></a>
+            <a href="Jalebi.html" class="collage-item"><img src="imgs/Jalebi1.webp" alt="Jalebi"><p>Jalebi</p></a>
+          </div>
+          
+      </div>
+      
         
     
     <!-- End Gallery -->
@@ -289,6 +270,43 @@ window.addEventListener("scroll", function () {
     });
 </script>
         
+</div> <!-- Closing tag for #content -->
+
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        if (!localStorage.getItem("videoPlayed")) {
+            document.getElementById('loader-video').onended = function() {
+                document.getElementById('loader').style.opacity = '0';
+                document.getElementById('content').classList.remove('hidden');
+                document.body.classList.remove("no-scroll");
+                
+                setTimeout(() => {
+                    document.getElementById('loader').style.display = 'none';
+                }, 500);
+
+                localStorage.setItem("videoPlayed", "true");
+            };
+        } else {
+            document.getElementById('loader').style.display = 'none';
+            document.getElementById('content').classList.remove('hidden');
+            document.body.classList.remove("no-scroll");
+        }
+    });
+</script>
+
+<script>
+    window.addEventListener("scroll", function () {
+        document.querySelectorAll(".gallery .box").forEach((el) => {
+            if (el.getBoundingClientRect().top < window.innerHeight * 0.85) {
+                el.classList.add("show");
+            }
+        });
+    });
+</script>
+
+
+</body>
+
 
 </body>
 </html>
